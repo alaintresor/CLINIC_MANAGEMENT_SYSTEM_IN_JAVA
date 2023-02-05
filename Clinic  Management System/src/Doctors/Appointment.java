@@ -42,6 +42,7 @@ public class Appointment extends javax.swing.JFrame {
             pGenderlbl.setText(gender);
 
         } catch (SQLException e) {
+            System.out.println(e);
             JOptionPane.showMessageDialog(null, "Something Went Wrong");
         }
 
