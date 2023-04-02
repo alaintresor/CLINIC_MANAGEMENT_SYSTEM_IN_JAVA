@@ -1,5 +1,4 @@
 package Receptionists;
-
 import Admins.ReceptionistManagement;
 import Main.Connector;
 import Main.Hospital;

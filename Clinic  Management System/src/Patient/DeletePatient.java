@@ -39,7 +39,7 @@ public class DeletePatient extends javax.swing.JFrame {
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
             Object columnData[] = new Object[11];
-          
+
             while (rs.next()) {
                 columnData[0] = rs.getString("id");
                 columnData[1] = rs.getString("date");
@@ -233,6 +233,7 @@ public class DeletePatient extends javax.swing.JFrame {
         connection = Connector.ConnectDb();
         String search = pSearchField.getText();
         String sql = "Delete from patient where name ='" + search + "'";
+
         try {
             ps = connection.prepareStatement(sql);
             ps.execute();
@@ -250,10 +251,13 @@ public class DeletePatient extends javax.swing.JFrame {
         connection = Connector.ConnectDb();
         String search = pSearchField.getText();
         String sql = "Delete from patient where name ='" + search + "'";
+        String sql2 = "DELETE FROM appointment WHERE pName='" + search + "';";
         try {
             ps = connection.prepareStatement(sql);
             ps.execute();
             JOptionPane.showMessageDialog(null, "Patient " + search + " has been deleted");
+            ps = connection.prepareStatement(sql2);
+            ps.execute();
             defaultTableModel.getDataVector().removeAllElements();
             defaultTableModel.fireTableDataChanged();
             loadData();
